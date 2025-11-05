@@ -1,18 +1,11 @@
-Traceback (most recent call last):
-  File "D:\ProgramData\Anaconda3\envs\ML39\lib\runpy.py", line 194, in _run_module_as_main
-    return _run_code(code, main_globals, None,
-  File "D:\ProgramData\Anaconda3\envs\ML39\lib\runpy.py", line 87, in _run_code
-    exec(code, run_globals)
-  File "C:\Users\sgl\Desktop\硕士课程\大模型\Transformer\src\main_train.py", line 220, in <module>
-    main()
-  File "C:\Users\sgl\Desktop\硕士课程\大模型\Transformer\src\main_train.py", line 106, in main
-    en_stoi, _ = build_vocab(args.data_path, "en", vocab_size=args.vocab_size)
-  File "C:\Users\sgl\Desktop\硕士课程\大模型\Transformer\src\data\vocab.py", line 18, in build_vocab
-    with open(file_path, "r", encoding="utf-8") as f:
-FileNotFoundError: [Errno 2] No such file or directory: 'data/ted_zh_en_train.txt'
 CUDA available: True
 cuda device count: 1
 current device: 0
 device name: NVIDIA GeForce RTX 4060 Laptop GPU
 Using device: cuda:0
 ==> 构建词表（基于训练集）...
+==> 加载训练/验证数据集...
+==> 初始化模型...
+==> 开始训练...
+epoch [1/50] | train loss: 6.6652 | val loss: 6.1039 | time: 15.71s
+epoch [2/50] | train loss: 5.9302 | val loss: 5.6979 | time: 15.32s

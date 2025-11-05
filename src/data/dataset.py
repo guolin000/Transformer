@@ -1,7 +1,7 @@
 # src/utils/dataset.py
 import torch
 from torch.utils.data import Dataset, DataLoader
-from src.data.vocab import tokenize, PAD, BOS, EOS
+from data.vocab import tokenize, PAD, BOS, EOS
 
 class TranslationDataset(Dataset):
     def __init__(self, path, src_vocab, tgt_vocab):

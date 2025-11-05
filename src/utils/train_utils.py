@@ -1,7 +1,7 @@
 # src/utils/train_utils.py
 import torch
 import torch.nn as nn
-from src.utils.mask import create_padding_mask, create_tgt_mask,create_subsequent_mask
+from .mask import create_padding_mask, create_tgt_mask,create_subsequent_mask
 
 
 

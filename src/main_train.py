@@ -11,11 +11,11 @@ from torch import nn, optim
 import pandas as pd
 import matplotlib.pyplot as plt
 
-from src.utils.config import get_args
-from src.data.vocab import build_vocab
-from src.data.dataset import TranslationDataset, collate_fn
-from src.models.transformer import Transformer
-from src.utils.train_utils import train_epoch, evaluate
+from utils.config import get_args
+from data.vocab import build_vocab
+from data.dataset import TranslationDataset, collate_fn
+from models.transformer import Transformer
+from utils.train_utils import train_epoch, evaluate
 
 
 def set_seed(seed):
