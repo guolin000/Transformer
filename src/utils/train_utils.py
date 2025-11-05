@@ -5,7 +5,7 @@ from .mask import create_padding_mask, create_tgt_mask,create_subsequent_mask
 
 
 
-def train_epoch(model, dataloader, optimizer, criterion, device):
+def train_epoch(model, dataloader, optimizer, criterion, device,scheduler=None):
     model.train()
     total_loss = 0
     for src, tgt in dataloader:
@@ -33,15 +33,13 @@ def train_epoch(model, dataloader, optimizer, criterion, device):
 
         optimizer.zero_grad()
         loss.backward()
+
+        # 梯度裁剪
         torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
 
-        grad_norm = 0
-        for p in model.parameters():
-            if p.grad is not None:
-                grad_norm += p.grad.data.norm(2).item()
-        # print("梯度范数:", grad_norm)
-
         optimizer.step()
+        if scheduler:
+            scheduler.step()
 
         total_loss += loss.item()
     return total_loss / len(dataloader)

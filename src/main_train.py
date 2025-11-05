@@ -5,6 +5,8 @@ import random
 import numpy as np
 
 import torch
+from torch.optim import AdamW
+from torch.optim.lr_scheduler import LambdaLR
 from torch.utils.data import DataLoader
 from torch import nn, optim
 
@@ -110,7 +112,18 @@ def main():
         max_len=args.max_len
     ).to(device)
 
-    optimizer = optim.Adam(model.parameters(), lr=args.lr, betas=(0.9, 0.98), eps=1e-9)
+    # 优化器
+    optimizer = AdamW(model.parameters(), lr=1.0, betas=(0.9, 0.98), eps=1e-9, weight_decay=1e-4)
+
+    # 学习率调度函数（Noam scheme）
+    def lr_lambda(step):
+        d_model = args.d_model
+        warmup_steps = getattr(args, "warmup_steps", 4000)
+        step += 1
+        return min(step ** -0.5, step * warmup_steps ** -1.5) * (d_model ** -0.5)
+
+    scheduler = LambdaLR(optimizer, lr_lambda=lr_lambda)
+
     criterion = nn.CrossEntropyLoss(ignore_index=0, label_smoothing=0.1)
 
     best_loss = float('inf')
@@ -122,11 +135,17 @@ def main():
     val_losses = []
     times_per_epoch = []
 
+    # --- 统计模型参数 ---
+    total_params = sum(p.numel() for p in model.parameters())
+    trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print(f"* 模型参数总数: {total_params}")
+    print(f"* 可训练参数数: {trainable_params}")
+
     print("==> 开始训练...")
     for epoch in range(args.num_epochs):
         start_time = time.time()
 
-        train_loss = train_epoch(model, train_loader, optimizer, criterion, device)
+        train_loss = train_epoch(model, train_loader, optimizer, criterion, device, scheduler)
         val_loss = evaluate(model, val_loader, criterion, device)
 
         epoch_time = time.time() - start_time
@@ -134,7 +153,8 @@ def main():
         train_losses.append(train_loss)
         val_losses.append(val_loss)
 
-        print(f"epoch [{epoch+1}/{args.num_epochs}] | train loss: {train_loss:.4f} | val loss: {val_loss:.4f} | time: {epoch_time:.2f}s")
+        print(f"epoch [{epoch+1}/{args.num_epochs}] | train loss: {train_loss:.4f} | val loss: {val_loss:.4f} | time: {epoch_time:.2f}s | lr: {optimizer.param_groups[0]['lr']:.6f}")
+
 
         # 保存最优模型
         if val_loss < best_loss:
