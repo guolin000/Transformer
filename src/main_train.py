@@ -114,8 +114,8 @@ def main():
     criterion = nn.CrossEntropyLoss(ignore_index=0, label_smoothing=0.1)
 
     best_loss = float('inf')
-    os.makedirs("checkpoints", exist_ok=True)
-    results_dir = "results"
+    os.makedirs("../checkpoints", exist_ok=True)
+    results_dir = "../results"
     os.makedirs(results_dir, exist_ok=True)
 
     train_losses = []
@@ -139,7 +139,7 @@ def main():
         # 保存最优模型
         if val_loss < best_loss:
             best_loss = val_loss
-            best_path = os.path.join("checkpoints", "best_model.pt")
+            best_path = os.path.join("../checkpoints", "best_model.pt")
             torch.save(model.state_dict(), best_path)
             # 同时写入当前最优信息到 results 目录
             with open(os.path.join(results_dir, "best_info.txt"), "w", encoding="utf-8") as f:
