@@ -20,7 +20,7 @@ def get_args():
 
     # 训练参数
     parser.add_argument('--batch_size', type=int, default=32, help='批大小')
-    parser.add_argument('--num_epochs', type=int, default=50, help='训练轮数')
+    parser.add_argument('--num_epochs', type=int, default=40, help='训练轮数')
     parser.add_argument('--lr', type=float, default=1e-4, help='学习率')
     parser.add_argument('--seed', type=int, default=42, help='随机种子')
     parser.add_argument('--device', type=str, default='cuda:0', help='训练设备')

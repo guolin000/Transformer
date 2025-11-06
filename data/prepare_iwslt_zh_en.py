@@ -13,7 +13,7 @@ import re
 # =========================
 # 配置
 # =========================
-DATA_DIR = "../src/data/en-zh"  # 解压后的 en-zh 文件夹
+DATA_DIR = "en-zh"  # 解压后的 en-zh 文件夹
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 ALL_FILE = os.path.join(SCRIPT_DIR, "ted_zh_en_all.txt")
 TRAIN_FILE = os.path.join(SCRIPT_DIR, "ted_zh_en_train.txt")

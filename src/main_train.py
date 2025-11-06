@@ -14,11 +14,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 from utils.config import get_args
+from utils.logger import get_logger
 from data.vocab import build_vocab
 from data.dataset import TranslationDataset, collate_fn
 from models.transformer import Transformer
 from utils.train_utils import train_epoch, evaluate
 
+# 初始化 logger
+logger = get_logger(log_dir="../results", log_filename="train_eval.log")
 
 def set_seed(seed):
     random.seed(seed)
@@ -73,33 +76,33 @@ def save_training_results(results_dir, train_losses, val_losses, times_per_epoch
 
 
 def main():
-    print("CUDA available:", torch.cuda.is_available())
-    print("cuda device count:", torch.cuda.device_count())
+    logger.info(f"CUDA available: {torch.cuda.is_available()}")
+    logger.info(f"cuda device count: {torch.cuda.device_count()}")
     if torch.cuda.is_available():
         try:
-            print("current device:", torch.cuda.current_device())
-            print("device name:", torch.cuda.get_device_name(0))
+            logger.info(f"current device: {torch.cuda.current_device()}")
+            logger.info(f"device name: {torch.cuda.get_device_name(0)}")
         except Exception:
             pass
 
     args = get_args()
     set_seed(args.seed)
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
-    print("Using device:", device)
+    logger.info(f"Using device: {device}")
 
-    print("==> 构建词表（基于训练集）...")
+    logger.info("==> 构建词表（基于训练集）...")
     # 通常词表基于训练集构建；如果希望用训练+验证合并构建，请把 data_path 换成合并路径
     en_stoi, _ = build_vocab(args.data_path, "en", vocab_size=args.vocab_size)
     zh_stoi, _ = build_vocab(args.data_path, "zh", vocab_size=args.vocab_size)
 
-    print("==> 加载训练/验证数据集...")
+    logger.info("==> 加载训练/验证数据集...")
     train_dataset = TranslationDataset(args.data_path, en_stoi, zh_stoi)
     val_dataset = TranslationDataset(args.val_data_path, en_stoi, zh_stoi)
 
     train_loader = DataLoader(train_dataset, batch_size=args.batch_size, shuffle=True, collate_fn=collate_fn, num_workers=0)
     val_loader = DataLoader(val_dataset, batch_size=args.batch_size, shuffle=False, collate_fn=collate_fn, num_workers=0)
 
-    print("==> 初始化模型...")
+    logger.info("==> 初始化模型...")
     model = Transformer(
         src_vocab_size=len(en_stoi),
         tgt_vocab_size=len(zh_stoi),
@@ -138,10 +141,10 @@ def main():
     # --- 统计模型参数 ---
     total_params = sum(p.numel() for p in model.parameters())
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print(f"* 模型参数总数: {total_params}")
-    print(f"* 可训练参数数: {trainable_params}")
+    logger.info(f"* 模型参数总数: {total_params}")
+    logger.info(f"* 可训练参数数: {trainable_params}")
 
-    print("==> 开始训练...")
+    logger.info("==> 开始训练...")
     for epoch in range(args.num_epochs):
         start_time = time.time()
 
@@ -153,7 +156,7 @@ def main():
         train_losses.append(train_loss)
         val_losses.append(val_loss)
 
-        print(f"epoch [{epoch+1}/{args.num_epochs}] | train loss: {train_loss:.4f} | val loss: {val_loss:.4f} | time: {epoch_time:.2f}s | lr: {optimizer.param_groups[0]['lr']:.6f}")
+        logger.info(f"epoch [{epoch+1}/{args.num_epochs}] | train loss: {train_loss:.4f} | val loss: {val_loss:.4f} | time: {epoch_time:.2f}s | lr: {optimizer.param_groups[0]['lr']:.6f}")
 
 
         # 保存最优模型
@@ -169,10 +172,10 @@ def main():
 
     # 训练完成，保存最终图表与表格
     saved = save_training_results(results_dir, train_losses, val_losses, times_per_epoch)
-    print("训练完成，已保存：")
+    logger.info("训练完成，已保存：")
     for k, v in saved.items():
-        print(f"  {k}: {v}")
-    print("模型已保存到 checkpoints/best_model.pt")
+        logger.info(f"  {k}: {v}")
+    logger.info("模型已保存到 checkpoints/best_model.pt")
 
 if __name__ == "__main__":
     main()

@@ -21,15 +21,6 @@ export PYTHONHASHSEED=$SEED
 # ================== 创建目录 ==================
 mkdir -p "$RESULTS_DIR" "$CHECKPOINTS_DIR"
 
-## ================== （可选）安装依赖 ==================
-#if [ -f "$PROJECT_ROOT/requirements.txt" ]; then
-#    echo "==> 安装依赖..."
-#    "$PYTHON_BIN" -m pip install --upgrade pip
-#    "$PYTHON_BIN" -m pip install -r "$PROJECT_ROOT/requirements.txt"
-#else
-#    echo "未找到 requirements.txt，跳过依赖安装"
-#fi
-
 # ================== 运行训练 ==================
 echo "======================================"
 echo "==> 开始训练..."

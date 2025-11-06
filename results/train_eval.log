@@ -1,11 +1,58 @@
-CUDA available: True
-cuda device count: 1
-current device: 0
-device name: NVIDIA GeForce RTX 4060 Laptop GPU
-Using device: cuda:0
-==> ππΩ®¥ ±Ì£®ª˘”⁄—µ¡∑ºØ£©...
-==> º”‘ÿ—µ¡∑/—È÷§ ˝æ›ºØ...
-==> ≥ı ºªØƒ£–Õ...
-==> ø™ º—µ¡∑...
-epoch [1/50] | train loss: 6.6652 | val loss: 6.1039 | time: 15.71s
-epoch [2/50] | train loss: 5.9302 | val loss: 5.6979 | time: 15.32s
+2025-11-06 19:37:22 | INFO | CUDA available: True
+2025-11-06 19:37:22 | INFO | cuda device count: 1
+2025-11-06 19:37:22 | INFO | current device: 0
+2025-11-06 19:37:22 | INFO | device name: NVIDIA GeForce RTX 4060 Laptop GPU
+2025-11-06 19:37:22 | INFO | Using device: cuda:0
+2025-11-06 19:37:22 | INFO | ==> ÊûÑÂª∫ËØçË°®ÔºàÂü∫‰∫éËÆ≠ÁªÉÈõÜÔºâ...
+2025-11-06 19:37:23 | INFO | ==> Âä†ËΩΩËÆ≠ÁªÉ/È™åËØÅÊï∞ÊçÆÈõÜ...
+2025-11-06 19:37:23 | INFO | ==> ÂàùÂßãÂåñÊ®°Âûã...
+2025-11-06 19:37:23 | INFO | * Ê®°ÂûãÂèÇÊï∞ÊÄªÊï∞: 2574935
+2025-11-06 19:37:23 | INFO | * ÂèØËÆ≠ÁªÉÂèÇÊï∞Êï∞: 2574935
+2025-11-06 19:37:23 | INFO | ==> ÂºÄÂßãËÆ≠ÁªÉ...
+2025-11-06 19:37:41 | INFO | epoch [1/40] | train loss: 7.0831 | val loss: 6.1256 | time: 17.99s | lr: 0.000197
+2025-11-06 19:37:54 | INFO | epoch [2/40] | train loss: 5.7535 | val loss: 5.3747 | time: 12.56s | lr: 0.000394
+2025-11-06 19:38:06 | INFO | epoch [3/40] | train loss: 5.2787 | val loss: 5.0909 | time: 12.42s | lr: 0.000590
+2025-11-06 19:38:19 | INFO | epoch [4/40] | train loss: 5.0638 | val loss: 4.9536 | time: 12.35s | lr: 0.000787
+2025-11-06 19:38:34 | INFO | epoch [5/40] | train loss: 4.9399 | val loss: 4.8673 | time: 14.81s | lr: 0.000984
+2025-11-06 19:38:50 | INFO | epoch [6/40] | train loss: 4.8538 | val loss: 4.8045 | time: 16.21s | lr: 0.001181
+2025-11-06 19:39:02 | INFO | epoch [7/40] | train loss: 4.7870 | val loss: 4.7531 | time: 12.46s | lr: 0.001377
+2025-11-06 19:39:15 | INFO | epoch [8/40] | train loss: 4.7302 | val loss: 4.7025 | time: 12.51s | lr: 0.001317
+2025-11-06 19:39:27 | INFO | epoch [9/40] | train loss: 4.6685 | val loss: 4.6653 | time: 12.49s | lr: 0.001242
+2025-11-06 19:39:40 | INFO | epoch [10/40] | train loss: 4.6167 | val loss: 4.6332 | time: 12.62s | lr: 0.001178
+2025-11-06 19:39:52 | INFO | epoch [11/40] | train loss: 4.5757 | val loss: 4.5994 | time: 12.44s | lr: 0.001123
+2025-11-06 19:40:05 | INFO | epoch [12/40] | train loss: 4.5374 | val loss: 4.5777 | time: 12.45s | lr: 0.001075
+2025-11-06 19:40:17 | INFO | epoch [13/40] | train loss: 4.5084 | val loss: 4.5597 | time: 12.61s | lr: 0.001033
+2025-11-06 19:40:30 | INFO | epoch [14/40] | train loss: 4.4804 | val loss: 4.5464 | time: 12.49s | lr: 0.000996
+2025-11-06 19:40:43 | INFO | epoch [15/40] | train loss: 4.4580 | val loss: 4.5317 | time: 12.57s | lr: 0.000962
+2025-11-06 19:40:55 | INFO | epoch [16/40] | train loss: 4.4358 | val loss: 4.5213 | time: 12.53s | lr: 0.000931
+2025-11-06 19:41:08 | INFO | epoch [17/40] | train loss: 4.4165 | val loss: 4.5112 | time: 12.52s | lr: 0.000903
+2025-11-06 19:41:20 | INFO | epoch [18/40] | train loss: 4.3981 | val loss: 4.5011 | time: 12.46s | lr: 0.000878
+2025-11-06 19:41:33 | INFO | epoch [19/40] | train loss: 4.3827 | val loss: 4.4950 | time: 12.84s | lr: 0.000855
+2025-11-06 19:41:46 | INFO | epoch [20/40] | train loss: 4.3683 | val loss: 4.4871 | time: 12.57s | lr: 0.000833
+2025-11-06 19:41:59 | INFO | epoch [21/40] | train loss: 4.3546 | val loss: 4.4811 | time: 13.29s | lr: 0.000813
+2025-11-06 19:42:12 | INFO | epoch [22/40] | train loss: 4.3427 | val loss: 4.4702 | time: 13.01s | lr: 0.000794
+2025-11-06 19:42:24 | INFO | epoch [23/40] | train loss: 4.3289 | val loss: 4.4673 | time: 12.45s | lr: 0.000777
+2025-11-06 19:42:40 | INFO | epoch [24/40] | train loss: 4.3188 | val loss: 4.4645 | time: 15.56s | lr: 0.000760
+2025-11-06 19:42:53 | INFO | epoch [25/40] | train loss: 4.3085 | val loss: 4.4626 | time: 12.88s | lr: 0.000745
+2025-11-06 19:43:07 | INFO | epoch [26/40] | train loss: 4.2975 | val loss: 4.4593 | time: 14.03s | lr: 0.000731
+2025-11-06 19:43:27 | INFO | epoch [27/40] | train loss: 4.2885 | val loss: 4.4567 | time: 20.10s | lr: 0.000717
+2025-11-06 19:43:46 | INFO | epoch [28/40] | train loss: 4.2804 | val loss: 4.4523 | time: 19.47s | lr: 0.000704
+2025-11-06 19:44:11 | INFO | epoch [29/40] | train loss: 4.2717 | val loss: 4.4497 | time: 24.05s | lr: 0.000692
+2025-11-06 19:44:25 | INFO | epoch [30/40] | train loss: 4.2644 | val loss: 4.4491 | time: 14.53s | lr: 0.000680
+2025-11-06 19:44:50 | INFO | epoch [31/40] | train loss: 4.2563 | val loss: 4.4472 | time: 24.64s | lr: 0.000669
+2025-11-06 19:45:19 | INFO | epoch [32/40] | train loss: 4.2491 | val loss: 4.4451 | time: 29.56s | lr: 0.000658
+2025-11-06 19:45:35 | INFO | epoch [33/40] | train loss: 4.2428 | val loss: 4.4433 | time: 15.95s | lr: 0.000648
+2025-11-06 19:46:02 | INFO | epoch [34/40] | train loss: 4.2356 | val loss: 4.4367 | time: 27.17s | lr: 0.000639
+2025-11-06 19:46:21 | INFO | epoch [35/40] | train loss: 4.2281 | val loss: 4.4383 | time: 18.04s | lr: 0.000630
+2025-11-06 19:46:35 | INFO | epoch [36/40] | train loss: 4.2231 | val loss: 4.4341 | time: 14.19s | lr: 0.000621
+2025-11-06 19:46:49 | INFO | epoch [37/40] | train loss: 4.2165 | val loss: 4.4303 | time: 14.22s | lr: 0.000612
+2025-11-06 19:47:03 | INFO | epoch [38/40] | train loss: 4.2105 | val loss: 4.4319 | time: 13.88s | lr: 0.000604
+2025-11-06 19:47:16 | INFO | epoch [39/40] | train loss: 4.2063 | val loss: 4.4313 | time: 12.81s | lr: 0.000596
+2025-11-06 19:47:29 | INFO | epoch [40/40] | train loss: 4.2008 | val loss: 4.4286 | time: 13.14s | lr: 0.000589
+2025-11-06 19:47:29 | INFO | ËÆ≠ÁªÉÂÆåÊàêÔºåÂ∑≤‰øùÂ≠òÔºö
+2025-11-06 19:47:29 | INFO |   csv: ../results\training_log.csv
+2025-11-06 19:47:29 | INFO |   excel: ../results\training_log.xlsx
+2025-11-06 19:47:29 | INFO |   json: ../results\training_log.json
+2025-11-06 19:47:29 | INFO |   image: ../results\training_curve.png
+2025-11-06 19:47:29 | INFO | Ê®°ÂûãÂ∑≤‰øùÂ≠òÂà∞ checkpoints/best_model.pt
+
